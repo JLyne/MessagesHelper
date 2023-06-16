@@ -1,0 +1,75 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+rootProject.ext.mavenUserName=""
+rootProject.ext.mavenPassword=""
+
+if (file("./build.gradle.local").exists()) {
+    apply from: "./build.gradle.local"
+}
+
+java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
+
+allprojects {
+    group = 'uk.co.notnull'
+    version = '1.0-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+        maven {
+            url 'https://repo.not-null.co.uk/releases/'
+        }
+
+        maven {
+            url 'https://papermc.io/repo/repository/maven-public/'
+        }
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                pom {
+                    description = 'Simple plugin for making a decent guess at a Minecraft player\'s platform'
+                    url = 'https://github.com/JLyne/MessagesHelper'
+                    developers {
+                        developer {
+                            id = 'jim'
+                            name = 'James Lyne'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/JLyne/MessagesHelper.git'
+                        developerConnection = 'scm:git:ssh://github.com/JLyne/MessagesHelper.git'
+                        url = 'https://github.com/JLyne/MessagesHelper'
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                credentials {
+                    username = rootProject.ext.mavenUserName
+                    password = rootProject.ext.mavenPassword
+                }
+                authentication {
+                    basic(BasicAuthentication)
+                }
+
+                def releasesRepoUrl = "https://repo.not-null.co.uk/releases/" // gradle -Prelease publish
+                def snapshotsRepoUrl = "https://repo.not-null.co.uk/snapshots/"
+                url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
+            }
+        }
+    }
+}
