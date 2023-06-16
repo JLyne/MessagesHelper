@@ -2,13 +2,23 @@ package uk.co.notnull.messageshelper;
 
 import org.bukkit.configuration.ConfigurationSection;
 
-public class MessagesHelper extends AbstractMessageHelper {
-    private static ConfigurationSection messages;
-    public static void setMessages(ConfigurationSection messages) {
-        MessagesHelper.messages = messages;
+public class MessagesHelper extends AbstractMessageHelper<ConfigurationSection> {
+    private static MessagesHelper instance;
+
+    public static MessagesHelper getInstance() {
+        if(instance == null) {
+            instance = new MessagesHelper();
+        }
+
+        return instance;
     }
 
-    public static String getString(String id) {
+    private ConfigurationSection messages;
+    public void setMessages(ConfigurationSection messages) {
+        this.messages = messages;
+    }
+
+    public String getString(String id) {
         if(messages == null) {
             return "";
         }
@@ -16,13 +26,13 @@ public class MessagesHelper extends AbstractMessageHelper {
         return messages.getString(id, "Message " + id + " does not exist");
     }
 
-    public static String getPrefix(Message.MessageType messageType) {
+    public String getPrefix(Message.MessageType messageType) {
         if(messageType.equals(Message.MessageType.ERROR)) {
-            return MessagesHelper.getString("prefix.error");
+            return getString("prefix.error");
         } else if(messageType.equals(Message.MessageType.WARNING)) {
-            return MessagesHelper.getString("prefix.warning");
+            return getString("prefix.warning");
         } else {
-            return MessagesHelper.getString("prefix.info");
+            return getString("prefix.info");
         }
     }
 }
