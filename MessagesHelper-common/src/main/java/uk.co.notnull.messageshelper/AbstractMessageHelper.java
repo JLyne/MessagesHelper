@@ -7,6 +7,8 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 public abstract class AbstractMessageHelper<C> {
@@ -14,6 +16,8 @@ public abstract class AbstractMessageHelper<C> {
 	public static final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     public abstract void setMessages(C messages);
+
+    public abstract void loadMessages(File file) throws IOException;
 
 	public abstract String getString(String id);
 

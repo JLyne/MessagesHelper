@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69465e1b-46a1-439f-96f2-7a175dca45ee" name="Changes" comment="Fix some method names">
+    <list default="true" id="69465e1b-46a1-439f-96f2-7a175dca45ee" name="Changes" comment="Use instance methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MessagesHelper-common/src/main/java/uk.co.notnull.messageshelper/AbstractMessageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/MessagesHelper-common/src/main/java/uk.co.notnull.messageshelper/AbstractMessageHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MessagesHelper-paper/src/main/java/uk.co.notnull.messageshelper/MessagesHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/MessagesHelper-paper/src/main/java/uk.co.notnull.messageshelper/MessagesHelper.java" afterDir="false" />
@@ -106,7 +106,7 @@
       <recent name="uk.co.notnull.messageshelper" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MessagesHelper [publishToMavenLocal]">
+  <component name="RunManager" selected="Gradle.MessagesHelper [publish]">
     <configuration name="MessagesHelper [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -172,9 +172,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MessagesHelper [publish]" />
         <item itemvalue="Gradle.MessagesHelper [publishToMavenLocal]" />
         <item itemvalue="Gradle.MessagesHelper [build]" />
-        <item itemvalue="Gradle.MessagesHelper [publish]" />
       </list>
     </recent_temporary>
   </component>
@@ -185,6 +185,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial codebase" />
     <MESSAGE value="Fix some method names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix some method names" />
+    <MESSAGE value="Use instance methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use instance methods" />
   </component>
 </project>

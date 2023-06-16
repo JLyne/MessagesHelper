@@ -1,6 +1,9 @@
 package uk.co.notnull.messageshelper;
 
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import java.io.File;
 
 public class MessagesHelper extends AbstractMessageHelper<ConfigurationSection> {
     private static MessagesHelper instance;
@@ -16,6 +19,11 @@ public class MessagesHelper extends AbstractMessageHelper<ConfigurationSection> 
     private ConfigurationSection messages;
     public void setMessages(ConfigurationSection messages) {
         this.messages = messages;
+    }
+
+    @Override
+    public void loadMessages(File file) {
+        messages = YamlConfiguration.loadConfiguration(file);
     }
 
     public String getString(String id) {

@@ -1,6 +1,10 @@
 package uk.co.notnull.messageshelper;
 
 import ninja.leaping.configurate.ConfigurationNode;
+import ninja.leaping.configurate.yaml.YAMLConfigurationLoader;
+
+import java.io.File;
+import java.io.IOException;
 
 public class MessagesHelper extends AbstractMessageHelper<ConfigurationNode> {
     private static MessagesHelper instance;
@@ -17,6 +21,11 @@ public class MessagesHelper extends AbstractMessageHelper<ConfigurationNode> {
 
     public void setMessages(ConfigurationNode messages) {
         this.messages = messages;
+    }
+
+    @Override
+    public void loadMessages(File file) throws IOException {
+        messages = YAMLConfigurationLoader.builder().setFile(file).build().load();
     }
 
     public String getString(String id) {
