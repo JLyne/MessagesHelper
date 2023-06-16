@@ -8,7 +8,7 @@ public class MessagesHelper extends AbstractMessageHelper {
         MessagesHelper.messages = messages;
     }
 
-    public static String get(String id) {
+    public static String getString(String id) {
         if(messages == null) {
             return "";
         }
@@ -18,11 +18,11 @@ public class MessagesHelper extends AbstractMessageHelper {
 
     public static String getPrefix(Message.MessageType messageType) {
         if(messageType.equals(Message.MessageType.ERROR)) {
-            return MessagesHelper.get("prefix.error");
+            return MessagesHelper.getString("prefix.error");
         } else if(messageType.equals(Message.MessageType.WARNING)) {
-            return MessagesHelper.get("prefix.warning");
+            return MessagesHelper.getString("prefix.warning");
         } else {
-            return MessagesHelper.get("prefix.info");
+            return MessagesHelper.getString("prefix.info");
         }
     }
 }
