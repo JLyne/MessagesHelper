@@ -89,6 +89,16 @@ public class Message {
 			return this;
 		}
 
+		public Builder stringReplacements(Map<String, String> replacements) {
+			stringReplacements.putAll(replacements);
+			return this;
+		}
+
+		public Builder componentReplacements(Map<String, ComponentLike> replacements) {
+			componentReplacements.putAll(replacements);
+			return this;
+		}
+
 		public Message build() {
 			return new Message(id, type, prefixed, stringReplacements, componentReplacements);
 		}
