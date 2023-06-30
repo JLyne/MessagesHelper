@@ -33,7 +33,7 @@ public class MessagesHelper extends AbstractMessageHelper<ConfigurationNode> {
             return "";
         }
 
-        return messages.getNode(id).getString("Message " + id + " does not exist");
+        return messages.getNode((Object[]) id.split("\\.")).getString("Message " + id + " does not exist");
     }
 
     public String getPrefix(Message.MessageType messageType) {
