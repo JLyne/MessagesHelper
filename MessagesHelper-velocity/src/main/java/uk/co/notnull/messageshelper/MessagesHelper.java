@@ -1,7 +1,7 @@
 package uk.co.notnull.messageshelper;
 
-import ninja.leaping.configurate.ConfigurationNode;
-import ninja.leaping.configurate.yaml.YAMLConfigurationLoader;
+import org.spongepowered.configurate.ConfigurationNode;
+import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class MessagesHelper extends AbstractMessageHelper<ConfigurationNode> {
 
     @Override
     public void loadMessages(File file) throws IOException {
-        messages = YAMLConfigurationLoader.builder().setFile(file).build().load();
+        messages = YamlConfigurationLoader.builder().file(file).build().load();
     }
 
     public String getString(String id) {
@@ -33,7 +33,7 @@ public class MessagesHelper extends AbstractMessageHelper<ConfigurationNode> {
             return "";
         }
 
-        return messages.getNode((Object[]) id.split("\\.")).getString("Message " + id + " does not exist");
+        return messages.node((Object[]) id.split("\\.")).getString("Message " + id + " does not exist");
     }
 
     public String getPrefix(Message.MessageType messageType) {
