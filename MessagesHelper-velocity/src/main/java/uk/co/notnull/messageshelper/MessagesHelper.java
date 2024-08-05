@@ -5,16 +5,14 @@ import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MessagesHelper extends AbstractMessageHelper<ConfigurationNode> {
-    private static MessagesHelper instance;
+    private static final Map<Object, MessagesHelper> instances = new HashMap<>();
 
-    public static MessagesHelper getInstance() {
-        if(instance == null) {
-            instance = new MessagesHelper();
-        }
-
-        return instance;
+    public static MessagesHelper getInstance(Object plugin) {
+        return instances.computeIfAbsent(plugin, (key) -> new MessagesHelper());
     }
 
     protected ConfigurationNode messages;

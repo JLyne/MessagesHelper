@@ -2,18 +2,17 @@ package uk.co.notnull.messageshelper;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MessagesHelper extends AbstractMessageHelper<ConfigurationSection> {
-    private static MessagesHelper instance;
+    private static final Map<Plugin, MessagesHelper> instances = new HashMap<>();
 
-    public static MessagesHelper getInstance() {
-        if(instance == null) {
-            instance = new MessagesHelper();
-        }
-
-        return instance;
+    public static MessagesHelper getInstance(Plugin plugin) {
+        return instances.computeIfAbsent(plugin, (key) -> new MessagesHelper());
     }
 
     private ConfigurationSection messages;
